@@ -2,4 +2,4 @@ Hello World!
 
 This is your durianpay cicd server.
 
-From lendy to the cloud! :)
+From lendy with love to the cloud! :)

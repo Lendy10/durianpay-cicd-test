@@ -31,15 +31,15 @@ jobs:
         push: true
         tags: lendy10/durianpay-test:latest
 
-    # - name: Deploy to EC2 via SSH
-    #   uses: appleboy/ssh-action@master
-    #   with:
-    #     host: ${{ secrets.HOST }}
-    #     username: ${{ secrets.USERNAME }}
-    #     key: ${{ secrets.SSH_KEY }}
-    #     port: ${{ secrets.PORT }}
-    #     script: |
-    #       docker pull yourusername/yourimage:latest
-    #       docker stop my-container || true
-    #       docker rm my-container || true
-    #       docker run -d --name my-container -p 80:80 yourusername/yourimage:latest
+    - name: Deploy to EC2 via SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.PORT }}
+        script: |
+          sudo docker pull lendy10/durianpay-test:latest
+          sudo docker stop durianpay-test || true
+          sudo docker rm durianpay-test || true
+          sudo docker run -d --name durianpay-test -p 80:80 lendy10/durianpay-test:latest
